@@ -25,9 +25,9 @@ namespace pixelColorHight
         int ccode = 0;
         int c1code = 0;
 
-        int dimensiune = 1;
+        int dimensiune = 10;
 
-        Color lowerBound = Color.FromArgb(0, 0, 0);
+        Color lowerBound = Color.FromArgb(55, 0, 0);
         Color upperBound = Color.FromArgb(255, 89, 89);
 
         Color pixelColor;
@@ -58,7 +58,8 @@ namespace pixelColorHight
                         //or
                         //g.DrawLine(new Pen(pixelColor), y, x, y +1, x +1);
                         //g.DrawRectangle(new Pen(Color.White), y, x, dimensiune, dimensiune);
-                       // g.FillRectangle(new SolidBrush(Color.White), y, x, dimensiune, dimensiune);
+                        // g.FillRectangle(new SolidBrush(Color.White), y, x, dimensiune, dimensiune);
+                        g.FillRectangle(new SolidBrush(Color.Black), y, x, dimensiune, dimensiune);
                     }
                     else
                     {
