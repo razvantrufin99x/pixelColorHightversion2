@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace pixelColorHight
 {
@@ -20,27 +21,46 @@ namespace pixelColorHight
         }
        
         Graphics g;
+        Graphics gt;
         Bitmap bmp = new Bitmap("img.png");
+        Bitmap bmpt = new Bitmap("t.png");
         Color c1;
         int ccode = 0;
         int c1code = 0;
 
         int dimensiune = 10;
 
-        Color lowerBound = Color.FromArgb(55, 0, 0);
-        Color upperBound = Color.FromArgb(255, 89, 89);
+        Color lowerBound = Color.FromArgb(100, 0, 0);
+        Color upperBound = Color.FromArgb(100, 255, 255);
 
         Color pixelColor;
 
         private void Form1_Load(object sender, EventArgs e)
         {
             g = panel1.CreateGraphics();
-          
+            gt = panel4.CreateGraphics();
            
             panel1.BackgroundImage = bmp;
+
             
         }
+        public void createThumbnail()
+        {
+            int i = 0, j = 0;
 
+            for (int x = 0; x < bmp.Height; x += 10)
+            {
+                i++;
+                for (int y = 0; y < bmp.Width; y += 10)
+                {
+                    j++;
+                    pixelColor = bmp.GetPixel(y, x);
+                    gt.FillRectangle(new SolidBrush(pixelColor),j,i, 2, 2);
+                }
+                j = 0;
+               
+            }
+        }
 
         public void selectPixelsRange()
         {
@@ -119,6 +139,11 @@ namespace pixelColorHight
         private void button2_Click(object sender, EventArgs e)
         {
             selectPixelsRange();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            createThumbnail();
         }
     }
 }
